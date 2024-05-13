@@ -5,10 +5,10 @@ const ProjetoValidator = require("../Validators/ProjetoValidator");
 
 const ProjetoRotas = Router();
 
-ProjetoRotas.post('/projetos',ProjetoValidator.create,ProjetoController.create);
-ProjetoRotas.get('/projetos', ProjetoController.read);
-ProjetoRotas.delete('/projetos/:id', ProjetoValidator.destroy,ProjetoController.delete);
-ProjetoRotas.put('/projetos/:id', ProjetoValidator.update,ProjetoController.update);
+ProjetoRotas.post('/',ProjetoValidator.create,ProjetoController.create);
+ProjetoRotas.get('/', ProjetoController.read);
+ProjetoRotas.delete('/:id', ProjetoValidator.destroy,ProjetoController.delete);
+ProjetoRotas.put('/:id', ProjetoValidator.update,ProjetoController.update);
 
 
 module.exports = ProjetoRotas;
