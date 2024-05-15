@@ -21,7 +21,6 @@ server.listen(8000, () => console.log("Servidor rodando!"));
 const express = require("express");
 const rotas = require("./routes/index");
 const cors = require("cors");
-
 const app = express();
 
 app.use(express.urlencoded({ extended : true }));
