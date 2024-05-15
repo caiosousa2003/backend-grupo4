@@ -1,13 +1,15 @@
 const { Router } = require("express");
 const UsuarioController = require("../Controllers/UsuarioController");
+const verificarJwt = require("../Middlewares/verificarJwt")
 const UsuarioValidator = require("../Validators/UsuarioValidator");
+
 
 const UsuarioRotas = Router();
 
 UsuarioRotas.post('/', UsuarioValidator.create, UsuarioController.create);
-UsuarioRotas.get('/', UsuarioController.read);
-UsuarioRotas.delete('/:id', UsuarioValidator.destroy, UsuarioController.delete);
-UsuarioRotas.put('/:id', UsuarioValidator.update, UsuarioController.update);
+UsuarioRotas.get('/',verificarJwt, UsuarioController.read);
+UsuarioRotas.delete('/:id', verificarJwt, UsuarioValidator.destroy, UsuarioController.delete);
+UsuarioRotas.put('/:id', verificarJwt ,UsuarioValidator.update, UsuarioController.update);
 
 
 module.exports = UsuarioRotas;
