@@ -2,23 +2,48 @@ const SessoesModel = require('../Models/SessoesModel');
 
 class SessoesController {
   async create(req, res) {
-    const sessoes = await SessoesModel.create(req.body);
+    try {
+      const sessoes = await SessoesModel.create(req.body);
 
-    return res.status(200).json(sessoes);
+      return res.status(200).json(sessoes);
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: 'Algo deu errado', error: error.mensage });
+    }
   }
 
   async read(req, res) {
-    const sessoes = await SessoesModel.find().populate('id_usuario', '-senha');
+    try {
+      const sessoes = await SessoesModel.find().populate(
+        'id_usuario',
+        '-senha',
+      );
 
-    return res.status(200).json(sessoes);
+      return res.status(200).json(sessoes);
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: 'Algo deu errado', error: error.mensage });
+    }
   }
 
   async delete(req, res) {
-    const { id } = req.params;
+    try {
+      const { id } = req.params;
 
-    await SessoesModel.findByIdAndDelete(id);
+      const sessaoEncontrada = await SessoesModel.findById(id);
 
-    return res.status(200).json({ mensagem: 'Sessao deletada com sucesso' });
+      if (!sessaoEncontrada)
+        return res.status(404).json({ message: 'Sessão não encontrada' });
+      await sessaoEncontrada.deleteOne();
+
+      return res.status(200).json({ mensagem: 'Sessao deletada com sucesso' });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: 'Algo deu errado', error: error.mensage });
+    }
   }
 }
 

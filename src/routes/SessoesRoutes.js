@@ -16,3 +16,5 @@ sessoessRotas.delete(
   sessoesValidator.destroy,
   SessoesController.delete,
 );
+
+module.exports = sessoessRotas;
