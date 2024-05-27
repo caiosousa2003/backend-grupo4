@@ -1,20 +1,22 @@
 const { Router } = require('express');
 const SessoesController = require('../Controllers/SessoesController');
 const verificarJwt = require('../Middlewares/verificarJwt');
-const sessoesValidator = require('../Validators/SessoesValidator');
+const SessoesValidator = require('../Validators/SessoesValidator');
 
-const sessoessRotas = Router();
+const SessoesRotas = Router();
 
-sessoessRotas.post(
-  '/sessoes',
-  sessoesValidator.create,
+SessoesRotas.post(
+  '/',
+  SessoesValidator.create,
   SessoesController.create,
 );
-sessoessRotas.get('/sessoes', SessoesController.read);
-sessoessRotas.delete(
-  '/sessoes/:id',
-  sessoesValidator.destroy,
+
+SessoesRotas.get('/', SessoesController.read);
+
+SessoesRotas.delete(
+  '/:id',
+  SessoesValidator.destroy,
   SessoesController.delete,
 );
 
-module.exports = sessoessRotas;
+module.exports = SessoesRotas;

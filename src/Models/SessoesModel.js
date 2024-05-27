@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schema = new Schema();
+const Schema = mongoose.Schema;
 
 const SessoesSchema = new Schema(
   {
