@@ -8,6 +8,7 @@ const ProjetoSchema = new Schema({
     unique: true,
   },
   descricao: String,
+  equipe: String,
 });
 
 const ProjetoModel = mongoose.model('projetos', ProjetoSchema);
