@@ -4,6 +4,6 @@ const AuthValidator = require("../Validators/AuthValidator");
 
 const loginRotas = Router();
 
-loginRotas.post("/", AuthController.login, AuthValidator.login);
+loginRotas.post("/", AuthValidator.login, AuthController.login);
 
 module.exports = loginRotas;
