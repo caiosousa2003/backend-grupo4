@@ -12,5 +12,4 @@ UsuarioRotas.get('/', verificarJwt, UsuarioController.read);
 UsuarioRotas.delete('/:id', verificarJwt, verificarAdmin, UsuarioValidator.destroy, UsuarioController.delete);
 UsuarioRotas.put('/:id', verificarJwt, verificarAdmin, UsuarioValidator.update, UsuarioController.update);
 
-
 module.exports = UsuarioRotas;

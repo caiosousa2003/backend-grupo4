@@ -12,7 +12,10 @@ const create = validateRequest({
 });
 
 const destroy = validateRequest({
-  params: z.object(mongoose.isValidObjectId, 'O id da sessão não é valido'),
+  params: z.object({ 
+    id_usuario: z.custom(mongoose.isValidObjectId, 'O id do usuário não é valido'      
+    ),
+  }),
 });
 
 module.exports = {
