@@ -7,14 +7,16 @@ const SessoesRotas = Router();
 
 SessoesRotas.post(
   '/',
+  verificarJwt,
   SessoesValidator.create,
   SessoesController.create,
 );
 
-SessoesRotas.get('/', SessoesController.read);
+SessoesRotas.get('/', verificarJwt, SessoesController.read);
 
 SessoesRotas.delete(
   '/:id',
+  verificarJwt,
   SessoesValidator.destroy,
   SessoesController.delete,
 );
