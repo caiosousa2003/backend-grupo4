@@ -17,7 +17,7 @@ SessoesRotas.post(
 SessoesRotas.get("/", verificarJwt, SessoesController.read);
 
 SessoesRotas.delete(
-  "/:id",
+  "/:id_usuario",
   verificarJwt,
   verificarUsuario,
   SessoesValidator.destroy,

@@ -36,8 +36,8 @@ class SessoesController {
 
   async delete(req, res) {
     try {
-      const { id } = req.params;
-      const sessaoEncontrada = await SessoesModel.findById(id);
+      const { id_usuario } = req.params;
+      const sessaoEncontrada = await SessoesModel.findById(id_usuario);
       if (!sessaoEncontrada)
         return res.status(404).json({ message: "Sessão não encontrada" });
       await sessaoEncontrada.deleteOne();

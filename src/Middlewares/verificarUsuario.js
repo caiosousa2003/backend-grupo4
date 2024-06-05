@@ -7,7 +7,6 @@ function verificarUsuario(req, res, next) {
   const { usuario } = jwt.decode(token);
   if (!usuario.nivel && usuario._id !== usuarioId)
     return res.status(401).json({ message: "Usuário sem permissão!" });
-
   next();
 }
 
