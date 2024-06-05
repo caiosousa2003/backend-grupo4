@@ -1,16 +1,14 @@
-const  jwt  = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
-function verificarUsuario(req, res, next){
-    const usuarioId = req.params.id_usuario || req.body.id_usuario;
+function verificarUsuario(req, res, next) {
+  const usuarioId = req.params.id_usuario || req.body.id_usuario;
+  const authHeader = req.headers.authorization || req.headers.Authorization;
+  const [bearer, token] = authHeader.split(" ");
+  const { usuario } = jwt.decode(token);
+  if (!usuario.nivel && usuario._id !== usuarioId)
+    return res.status(401).json({ message: "Usuário sem permissão!" });
 
-    const authHeader = req.headers.authorization || req.headers.Authorization;
-
-    const [bearer, token] = authHeader.split(" ");
-
-    const {usuario} = jwt.decode(token);
-    if(!usuario.nivel || usuario._id !== usuarioId) return res.status(401).json({ message: "Usuário sem permissão!" });
-
-    next();
+  next();
 }
 
 module.exports = verificarUsuario;
