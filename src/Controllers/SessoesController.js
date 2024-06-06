@@ -14,7 +14,6 @@ class SessoesController {
         id_usuario: req.body.id_usuario,
         id_projeto: _id,
       });
-      console.log(sessoes);
       return res.status(200).json(sessoes);
     } catch (error) {
       res
@@ -26,7 +25,7 @@ class SessoesController {
   async read(req, res) {
     try {
       const sessoes = await SessoesModel.find().populate(
-        "id_usuario",
+        "id_usuario id_projeto",
         "-senha"
       );
 
