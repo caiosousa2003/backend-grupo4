@@ -10,11 +10,11 @@ class SessoesController {
         return res.status(404).json({ message: "Projeto não encontrado." });
       }
       const { _id } = project[0];
-
       const sessoes = await SessoesModel.create({
         id_usuario: req.body.id_usuario,
         id_projeto: _id,
       });
+      console.log(sessoes);
       return res.status(200).json(sessoes);
     } catch (error) {
       res

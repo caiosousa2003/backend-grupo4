@@ -9,12 +9,9 @@ const SessoesSchema = new Schema(
       ref: "usuarios",
       unique: true,
     },
-  },
-  {
     id_projeto: {
       type: Schema.Types.ObjectId,
       ref: "projetos",
-      unique: true,
     },
   },
   {

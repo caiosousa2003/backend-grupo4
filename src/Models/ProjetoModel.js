@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
@@ -11,6 +11,6 @@ const ProjetoSchema = new Schema({
   equipe: String,
 });
 
-const ProjetoModel = mongoose.model('projetos', ProjetoSchema);
+const ProjetoModel = mongoose.model("projetos", ProjetoSchema);
 
 module.exports = ProjetoModel;
